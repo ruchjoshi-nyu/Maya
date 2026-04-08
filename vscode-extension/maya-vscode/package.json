@@ -1,0 +1,129 @@
+{
+  "name": "maya-vscode",
+  "displayName": "Maya",
+  "description": "Practical VS Code companion for Maya with project-aware launch behavior and a real Control Center.",
+  "version": "0.1.1",
+  "publisher": "devnull-bootloader",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Themes",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:maya.start",
+    "onCommand:maya.startInWorkspaceRoot",
+    "onCommand:maya.openDocs",
+    "onCommand:maya.openSetupDocs",
+    "onCommand:maya.openWorkspaceProfile",
+    "onCommand:maya.openControlCenter",
+    "onView:maya.controlCenter"
+  ],
+  "main": "./src/extension.js",
+  "files": [
+    "README.md",
+    "media/**",
+    "src/extension.js",
+    "src/presentation.js",
+    "src/state.js",
+    "themes/**"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "maya.start",
+        "title": "Maya: Launch in Terminal",
+        "category": "Maya"
+      },
+      {
+        "command": "maya.startInWorkspaceRoot",
+        "title": "Maya: Launch in Workspace Root",
+        "category": "Maya"
+      },
+      {
+        "command": "maya.openDocs",
+        "title": "Maya: Open Repository",
+        "category": "Maya"
+      },
+      {
+        "command": "maya.openSetupDocs",
+        "title": "Maya: Open Setup Guide",
+        "category": "Maya"
+      },
+      {
+        "command": "maya.openWorkspaceProfile",
+        "title": "Maya: Open Workspace Profile",
+        "category": "Maya"
+      },
+      {
+        "command": "maya.openControlCenter",
+        "title": "Maya: Open Control Center",
+        "category": "Maya"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "maya",
+          "title": "Maya",
+          "icon": "media/maya.svg"
+        }
+      ]
+    },
+    "views": {
+      "maya": [
+        {
+          "id": "maya.controlCenter",
+          "name": "Control Center",
+          "type": "webview"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Maya",
+      "properties": {
+        "maya.launchCommand": {
+          "type": "string",
+          "default": "maya",
+          "description": "Command run in the integrated terminal when launching Maya."
+        },
+        "maya.terminalName": {
+          "type": "string",
+          "default": "Maya",
+          "description": "Integrated terminal tab name for Maya sessions."
+        },
+        "maya.useOpenAIShim": {
+          "type": "boolean",
+          "default": false,
+          "description": "Optionally set MAYA_CODE_USE_OPENAI=1 in launched Maya terminals."
+        }
+      }
+    },
+    "themes": [
+      {
+        "label": "Maya Terminal Black",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Maya-Terminal-Black.json"
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node --test ./src/*.test.js",
+    "lint": "node -e \"for (const file of require('node:fs').readdirSync('./src')) { if (file.endsWith('.js')) { require('node:child_process').execFileSync(process.execPath, ['--check', require('node:path').join('src', file)], { stdio: 'inherit' }); } }\"",
+    "package": "npx @vscode/vsce package --no-dependencies"
+  },
+  "keywords": [
+    "maya",
+    "terminal",
+    "theme",
+    "cli",
+    "llm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gitlawb/maya"
+  },
+  "license": "MIT"
+}
