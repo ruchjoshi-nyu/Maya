@@ -30,7 +30,7 @@ beforeEach(() => {
   ;(globalThis as Record<string, unknown>).MACRO = { VERSION: 'test-version' }
   process.env.MAYA_CODE_USE_MAYA = '1'
   process.env.MAYA_API_KEY = 'maya-test-key'
-  process.env.MAYA_MODEL = 'maya-2.0-flash'
+  process.env.MAYA_MODEL = 'maya-3-flash'
   process.env.MAYA_BASE_URL = 'https://maya.example/v1beta/openai'
 
   delete process.env.GOOGLE_API_KEY
@@ -74,7 +74,7 @@ test('routes Maya provider requests through the OpenAI-compatible shim', async (
     return new Response(
       JSON.stringify({
         id: 'chatcmpl-maya',
-        model: 'maya-2.0-flash',
+        model: 'maya-3-flash',
         choices: [
           {
             message: {
@@ -100,11 +100,11 @@ test('routes Maya provider requests through the OpenAI-compatible shim', async (
 
   const client = (await getAnthropicClient({
     maxRetries: 0,
-    model: 'maya-2.0-flash',
+    model: 'maya-3-flash',
   })) as unknown as ShimClient
 
   const response = await client.beta.messages.create({
-    model: 'maya-2.0-flash',
+    model: 'maya-3-flash',
     system: 'test system',
     messages: [{ role: 'user', content: 'hello' }],
     max_tokens: 64,
@@ -113,9 +113,9 @@ test('routes Maya provider requests through the OpenAI-compatible shim', async (
 
   expect(capturedUrl).toBe('https://maya.example/v1beta/openai/chat/completions')
   expect(capturedHeaders?.get('authorization')).toBe('Bearer maya-test-key')
-  expect(capturedBody?.model).toBe('maya-2.0-flash')
+  expect(capturedBody?.model).toBe('maya-3-flash')
   expect(response).toMatchObject({
     role: 'assistant',
-    model: 'maya-2.0-flash',
+    model: 'maya-3-flash',
   })
 })

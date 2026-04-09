@@ -36,9 +36,9 @@ model_list:
       model: anthropic/maya-sonnet-4-5-20250929
       api_key: os.environ/ANTHROPIC_API_KEY
 
-  - model_name: maya-2.5-flash
+  - model_name: maya-3-flash
     litellm_params:
-      model: maya/maya-2.5-flash
+      model: maya/maya-3-flash
       api_key: os.environ/MAYA_API_KEY
 
   - model_name: llama-3.3-70b
@@ -67,7 +67,7 @@ export OPENAI_MODEL=<your-litellm-model-alias>
 maya
 ```
 
-Replace `<your-litellm-model-alias>` with a model name from your `litellm_config.yaml` (e.g., `gpt-4o`, `maya-sonnet-4`, `maya-2.5-flash`).
+Replace `<your-litellm-model-alias>` with a model name from your `litellm_config.yaml` (e.g., `gpt-4o`, `maya-sonnet-4`, `maya-3-flash`).
 
 ### Option B: Using /provider
 

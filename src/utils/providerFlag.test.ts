@@ -41,7 +41,7 @@ describe('parseProviderFlag', () => {
   })
 
   test('returns provider name with --model alongside', () => {
-    expect(parseProviderFlag(['--provider', 'maya', '--model', 'maya-2.0-flash'])).toBe('maya')
+    expect(parseProviderFlag(['--provider', 'maya', '--model', 'maya-3-flash'])).toBe('maya')
   })
 
   test('returns null when --provider flag absent', () => {
@@ -93,8 +93,8 @@ describe('applyProviderFlag - maya', () => {
   })
 
   test('sets MAYA_MODEL when --model is provided', () => {
-    applyProviderFlag('maya', ['--model', 'maya-2.0-flash'])
-    expect(process.env.MAYA_MODEL).toBe('maya-2.0-flash')
+    applyProviderFlag('maya', ['--model', 'maya-3-flash'])
+    expect(process.env.MAYA_MODEL).toBe('maya-3-flash')
   })
 })
 

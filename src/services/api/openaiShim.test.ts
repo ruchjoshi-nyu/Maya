@@ -473,7 +473,7 @@ test('uses MAYA_ACCESS_TOKEN for Maya OpenAI-compatible requests', async () => {
   process.env.GOOGLE_CLOUD_PROJECT = 'maya-project'
   process.env.MAYA_BASE_URL =
     'https://generativelanguage.googleapis.com/v1beta/openai'
-  process.env.MAYA_MODEL = 'maya-2.0-flash'
+  process.env.MAYA_MODEL = 'maya-3-flash'
   delete process.env.OPENAI_BASE_URL
   delete process.env.OPENAI_API_KEY
   delete process.env.MAYA_API_KEY
@@ -492,7 +492,7 @@ test('uses MAYA_ACCESS_TOKEN for Maya OpenAI-compatible requests', async () => {
     return new Response(
       JSON.stringify({
         id: 'chatcmpl-maya',
-        model: 'maya-2.0-flash',
+        model: 'maya-3-flash',
         choices: [
           {
             message: {
@@ -519,7 +519,7 @@ test('uses MAYA_ACCESS_TOKEN for Maya OpenAI-compatible requests', async () => {
   const client = createOpenAIShimClient({}) as OpenAIShimClient
 
   await client.beta.messages.create({
-    model: 'maya-2.0-flash',
+    model: 'maya-3-flash',
     messages: [{ role: 'user', content: 'hello' }],
     max_tokens: 32,
     stream: false,

@@ -75,7 +75,7 @@ export OPENAI_MODEL=deepseek-chat
 export MAYA_CODE_USE_OPENAI=1
 export OPENAI_API_KEY=sk-or-...
 export OPENAI_BASE_URL=https://openrouter.ai/api/v1
-export OPENAI_MODEL=google/maya-2.0-flash-001
+export OPENAI_MODEL=google/maya-3-flash-001
 ```
 
 OpenRouter model availability changes over time. If a model stops working, try another current OpenRouter model before assuming the integration is broken.

@@ -109,8 +109,8 @@ def build_default_providers() -> list[Provider]:
             ping_url="https://generativelanguage.googleapis.com/v1/models",
             api_key_env="MAYA_API_KEY",
             cost_per_1k_tokens=0.0005,
-            big_model=big if "maya" in big else "maya-2.5-pro",
-            small_model=small if "maya" in small else "maya-2.0-flash",
+            big_model=big if "maya" in big else "maya-3.1-pro",
+            small_model=small if "maya" in small else "maya-3-flash",
         ),
         Provider(
             name="ollama",
