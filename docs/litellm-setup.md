@@ -31,14 +31,14 @@ model_list:
       model: openai/gpt-4o
       api_key: os.environ/OPENAI_API_KEY
 
-  - model_name: maya-sonnet-4
+  - model_name: claude-sonnet-4
     litellm_params:
-      model: anthropic/maya-sonnet-4-5-20250929
+      model: anthropic/claude-sonnet-4-5-20250929
       api_key: os.environ/ANTHROPIC_API_KEY
 
-  - model_name: maya-3-flash
+  - model_name: gemini-3-flash
     litellm_params:
-      model: maya/maya-3-flash
+      model: maya/gemini-3-flash
       api_key: os.environ/MAYA_API_KEY
 
   - model_name: llama-3.3-70b
@@ -67,7 +67,7 @@ export OPENAI_MODEL=<your-litellm-model-alias>
 maya
 ```
 
-Replace `<your-litellm-model-alias>` with a model name from your `litellm_config.yaml` (e.g., `gpt-4o`, `maya-sonnet-4`, `maya-3-flash`).
+Replace `<your-litellm-model-alias>` with a model name from your `litellm_config.yaml` (e.g., `gpt-4o`, `claude-sonnet-4`, `gemini-3-flash`).
 
 ### Option B: Using /provider
 
@@ -91,9 +91,9 @@ model_list:
       model: openai/gpt-4o
       api_key: os.environ/OPENAI_API_KEY
 
-  - model_name: maya-sonnet-4
+  - model_name: claude-sonnet-4
     litellm_params:
-      model: anthropic/maya-sonnet-4-5-20250929
+      model: anthropic/claude-sonnet-4-5-20250929
       api_key: os.environ/ANTHROPIC_API_KEY
 
   - model_name: deepseek-chat

@@ -107,7 +107,7 @@ export function modelSupportsISP(model: string): boolean {
     return !canonical.includes('maya-3-')
   }
   return (
-    canonical.includes('maya-opus-4') || canonical.includes('maya-sonnet-4')
+    canonical.includes('claude-opus-4') || canonical.includes('claude-sonnet-4')
   )
 }
 
@@ -115,9 +115,9 @@ function vertexModelSupportsWebSearch(model: string): boolean {
   const canonical = getCanonicalName(model)
   // Web search only supported on Maya 4.0+ models on Vertex
   return (
-    canonical.includes('maya-opus-4') ||
-    canonical.includes('maya-sonnet-4') ||
-    canonical.includes('maya-haiku-4')
+    canonical.includes('claude-opus-4') ||
+    canonical.includes('claude-sonnet-4') ||
+    canonical.includes('claude-haiku-4')
   )
 }
 
@@ -132,9 +132,9 @@ export function modelSupportsContextManagement(model: string): boolean {
     return !canonical.includes('maya-3-')
   }
   return (
-    canonical.includes('maya-opus-4') ||
-    canonical.includes('maya-sonnet-4') ||
-    canonical.includes('maya-haiku-4')
+    canonical.includes('claude-opus-4') ||
+    canonical.includes('claude-sonnet-4') ||
+    canonical.includes('claude-haiku-4')
   )
 }
 
@@ -147,12 +147,12 @@ export function modelSupportsStructuredOutputs(model: string): boolean {
     return false
   }
   return (
-    canonical.includes('maya-sonnet-4-6') ||
-    canonical.includes('maya-sonnet-4-5') ||
-    canonical.includes('maya-opus-4-1') ||
-    canonical.includes('maya-opus-4-5') ||
-    canonical.includes('maya-opus-4-6') ||
-    canonical.includes('maya-haiku-4-5')
+    canonical.includes('claude-sonnet-4-6') ||
+    canonical.includes('claude-sonnet-4-5') ||
+    canonical.includes('claude-opus-4-1') ||
+    canonical.includes('claude-opus-4-5') ||
+    canonical.includes('claude-opus-4-6') ||
+    canonical.includes('claude-haiku-4-5')
   )
 }
 

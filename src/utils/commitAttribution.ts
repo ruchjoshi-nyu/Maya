@@ -153,16 +153,16 @@ export function sanitizeSurfaceKey(surfaceKey: string): string {
  */
 export function sanitizeModelName(shortName: string): string {
   // Map internal variants to public equivalents based on model family
-  if (shortName.includes('opus-4-6')) return 'maya-opus-4-6'
-  if (shortName.includes('opus-4-5')) return 'maya-opus-4-5'
-  if (shortName.includes('opus-4-1')) return 'maya-opus-4-1'
-  if (shortName.includes('opus-4')) return 'maya-opus-4'
-  if (shortName.includes('sonnet-4-6')) return 'maya-sonnet-4-6'
-  if (shortName.includes('sonnet-4-5')) return 'maya-sonnet-4-5'
-  if (shortName.includes('sonnet-4')) return 'maya-sonnet-4'
-  if (shortName.includes('sonnet-3-7')) return 'maya-sonnet-3-7'
-  if (shortName.includes('haiku-4-5')) return 'maya-haiku-4-5'
-  if (shortName.includes('haiku-3-5')) return 'maya-haiku-3-5'
+  if (shortName.includes('opus-4-6')) return 'claude-opus-4-6'
+  if (shortName.includes('opus-4-5')) return 'claude-opus-4-5'
+  if (shortName.includes('opus-4-1')) return 'claude-opus-4-1'
+  if (shortName.includes('opus-4')) return 'claude-opus-4'
+  if (shortName.includes('sonnet-4-6')) return 'claude-sonnet-4-6'
+  if (shortName.includes('sonnet-4-5')) return 'claude-sonnet-4-5'
+  if (shortName.includes('sonnet-4')) return 'claude-sonnet-4'
+  if (shortName.includes('sonnet-3-7')) return 'claude-sonnet-3-7'
+  if (shortName.includes('haiku-4-5')) return 'claude-haiku-4-5'
+  if (shortName.includes('haiku-3-5')) return 'claude-haiku-3-5'
   // Unknown models get a generic name
   return 'maya'
 }
@@ -232,7 +232,7 @@ export function getClientSurface(): string {
 
 /**
  * Build a surface key that includes the model name.
- * Format: "surface/model" (e.g., "cli/maya-sonnet")
+ * Format: "surface/model" (e.g., "cli/claude-sonnet")
  */
 export function buildSurfaceKey(surface: string, model: ModelName): string {
   return `${surface}/${getCanonicalName(model)}`

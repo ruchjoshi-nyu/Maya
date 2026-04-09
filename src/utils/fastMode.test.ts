@@ -74,7 +74,7 @@ function installCommonMocks(options?: {
   }))
 
   mock.module('./model/model.js', () => ({
-    getDefaultMainLoopModelSetting: () => 'maya-sonnet-4-6',
+    getDefaultMainLoopModelSetting: () => 'claude-sonnet-4-6',
     isOpus1mMergeEnabled: () => false,
     parseUserSpecifiedModel: (model: string) => model,
   }))

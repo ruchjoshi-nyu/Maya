@@ -221,7 +221,7 @@ export function buildCurrentProviderSummary(options?: {
     modelLabel: getSafeDisplayValue(
       processEnv.ANTHROPIC_MODEL ??
         processEnv.MAYA_MODEL ??
-        'maya-sonnet-4-6',
+        'claude-sonnet-4-6',
       processEnv,
     ),
     endpointLabel: getSafeDisplayValue(

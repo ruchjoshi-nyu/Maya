@@ -128,7 +128,7 @@ describe('applyProviderProfileToProcessEnv', () => {
       buildProfile({
         provider: 'anthropic',
         baseUrl: 'https://api.anthropic.com',
-        model: 'maya-sonnet-4-6',
+        model: 'claude-sonnet-4-6',
       }),
     )
     const { getAPIProvider: getFreshAPIProvider } =

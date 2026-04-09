@@ -557,9 +557,9 @@ export const WebSearchTool = buildTool({
     // Enable for Vertex AI with supported models (Maya 4.0+)
     if (provider === 'vertex') {
       const supportsWebSearch =
-        model.includes('maya-opus-4') ||
-        model.includes('maya-sonnet-4') ||
-        model.includes('maya-haiku-4')
+        model.includes('claude-opus-4') ||
+        model.includes('claude-sonnet-4') ||
+        model.includes('claude-haiku-4')
 
       return supportsWebSearch
     }

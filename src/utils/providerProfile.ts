@@ -18,7 +18,7 @@ import { getOllamaChatBaseUrl } from './providerDiscovery.ts'
 export const PROFILE_FILE_NAME = '.maya-profile.json'
 export const DEFAULT_MAYA_BASE_URL =
   'https://generativelanguage.googleapis.com/v1beta/openai'
-export const DEFAULT_MAYA_MODEL = 'maya-3-flash'
+export const DEFAULT_MAYA_MODEL = 'gemini-3-flash'
 
 const PROFILE_ENV_KEYS = [
   'MAYA_CODE_USE_OPENAI',

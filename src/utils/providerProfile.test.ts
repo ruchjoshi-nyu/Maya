@@ -141,7 +141,7 @@ test('matching persisted maya env is reused for maya launch', async () => {
   const env = await buildLaunchEnv({
     profile: 'maya',
     persisted: profile('maya', {
-      MAYA_MODEL: 'maya-3-flash',
+      MAYA_MODEL: 'gemini-3-flash',
       MAYA_API_KEY: 'gem-persisted',
       MAYA_BASE_URL: 'https://example.test/v1beta/openai',
     }),
@@ -151,7 +151,7 @@ test('matching persisted maya env is reused for maya launch', async () => {
 
   assert.equal(env.MAYA_CODE_USE_MAYA, '1')
   assert.equal(env.MAYA_CODE_USE_OPENAI, undefined)
-  assert.equal(env.MAYA_MODEL, 'maya-3-flash')
+  assert.equal(env.MAYA_MODEL, 'gemini-3-flash')
   assert.equal(env.MAYA_API_KEY, 'gem-persisted')
   assert.equal(env.MAYA_BASE_URL, 'https://example.test/v1beta/openai')
 })
@@ -179,7 +179,7 @@ test('maya launch ignores mismatched persisted openai env and strips other provi
 
   assert.equal(env.MAYA_CODE_USE_MAYA, '1')
   assert.equal(env.MAYA_CODE_USE_OPENAI, undefined)
-  assert.equal(env.MAYA_MODEL, 'maya-3-flash')
+  assert.equal(env.MAYA_MODEL, 'gemini-3-flash')
   assert.equal(env.MAYA_API_KEY, 'gem-live')
   assert.equal(
     env.MAYA_BASE_URL,
@@ -356,7 +356,7 @@ test('maya profiles accept google api key fallback', () => {
 
   assert.deepEqual(env, {
     MAYA_AUTH_MODE: 'api-key',
-    MAYA_MODEL: 'maya-3-flash',
+    MAYA_MODEL: 'gemini-3-flash',
     MAYA_API_KEY: 'gem-live',
   })
 })
@@ -364,26 +364,26 @@ test('maya profiles accept google api key fallback', () => {
 test('maya profiles support access-token auth mode without persisting a key', () => {
   const env = buildMayaProfileEnv({
     authMode: 'access-token',
-    model: 'maya-3-flash',
+    model: 'gemini-3-flash',
     processEnv: {},
   })
 
   assert.deepEqual(env, {
     MAYA_AUTH_MODE: 'access-token',
-    MAYA_MODEL: 'maya-3-flash',
+    MAYA_MODEL: 'gemini-3-flash',
   })
 })
 
 test('maya profiles support adc auth mode without persisting a key', () => {
   const env = buildMayaProfileEnv({
     authMode: 'adc',
-    model: 'maya-3-flash',
+    model: 'gemini-3-flash',
     processEnv: {},
   })
 
   assert.deepEqual(env, {
     MAYA_AUTH_MODE: 'adc',
-    MAYA_MODEL: 'maya-3-flash',
+    MAYA_MODEL: 'gemini-3-flash',
   })
 })
 
@@ -421,7 +421,7 @@ test('buildStartupEnvFromProfile applies persisted maya settings when no provide
   const env = await buildStartupEnvFromProfile({
     persisted: profile('maya', {
       MAYA_API_KEY: 'gem-test',
-      MAYA_MODEL: 'maya-3-flash',
+      MAYA_MODEL: 'gemini-3-flash',
     }),
     processEnv: {},
   })
@@ -429,14 +429,14 @@ test('buildStartupEnvFromProfile applies persisted maya settings when no provide
   assert.equal(env.MAYA_CODE_USE_MAYA, '1')
   assert.equal(env.MAYA_CODE_USE_OPENAI, undefined)
   assert.equal(env.MAYA_API_KEY, 'gem-test')
-  assert.equal(env.MAYA_MODEL, 'maya-3-flash')
+  assert.equal(env.MAYA_MODEL, 'gemini-3-flash')
 })
 
 test('buildStartupEnvFromProfile rehydrates stored Maya access token for access-token profile mode', async () => {
   const env = await buildStartupEnvFromProfile({
     persisted: profile('maya', {
       MAYA_AUTH_MODE: 'access-token',
-      MAYA_MODEL: 'maya-3-flash',
+      MAYA_MODEL: 'gemini-3-flash',
     }),
     processEnv: {},
     readMayaAccessToken: () => 'token-live',
@@ -446,14 +446,14 @@ test('buildStartupEnvFromProfile rehydrates stored Maya access token for access-
   assert.equal(env.MAYA_AUTH_MODE, 'access-token')
   assert.equal(env.MAYA_ACCESS_TOKEN, 'token-live')
   assert.equal(env.MAYA_API_KEY, undefined)
-  assert.equal(env.MAYA_MODEL, 'maya-3-flash')
+  assert.equal(env.MAYA_MODEL, 'gemini-3-flash')
 })
 
 test('buildStartupEnvFromProfile does not inject stored access token for adc profile mode', async () => {
   const env = await buildStartupEnvFromProfile({
     persisted: profile('maya', {
       MAYA_AUTH_MODE: 'adc',
-      MAYA_MODEL: 'maya-3-flash',
+      MAYA_MODEL: 'gemini-3-flash',
     }),
     processEnv: {},
     readMayaAccessToken: () => 'token-live',
@@ -469,7 +469,7 @@ test('buildStartupEnvFromProfile leaves explicit provider selections untouched',
   const processEnv = {
     MAYA_CODE_USE_MAYA: '1',
     MAYA_API_KEY: 'gem-live',
-    MAYA_MODEL: 'maya-3-flash',
+    MAYA_MODEL: 'gemini-3-flash',
   }
 
   const env = await buildStartupEnvFromProfile({
@@ -489,7 +489,7 @@ test('buildStartupEnvFromProfile leaves profile-managed env untouched', async ()
   const processEnv = {
     MAYA_CODE_PROVIDER_PROFILE_ENV_APPLIED: '1',
     ANTHROPIC_BASE_URL: 'https://api.anthropic.com',
-    ANTHROPIC_MODEL: 'maya-sonnet-4-6',
+    ANTHROPIC_MODEL: 'claude-sonnet-4-6',
   }
 
   const env = await buildStartupEnvFromProfile({
@@ -501,7 +501,7 @@ test('buildStartupEnvFromProfile leaves profile-managed env untouched', async ()
   })
 
   assert.equal(env, processEnv)
-  assert.equal(env.ANTHROPIC_MODEL, 'maya-sonnet-4-6')
+  assert.equal(env.ANTHROPIC_MODEL, 'claude-sonnet-4-6')
   assert.equal(env.OPENAI_MODEL, undefined)
 })
 
@@ -513,7 +513,7 @@ test('buildStartupEnvFromProfile treats explicit falsey provider flags as user i
   const env = await buildStartupEnvFromProfile({
     persisted: profile('maya', {
       MAYA_API_KEY: 'gem-persisted',
-      MAYA_MODEL: 'maya-3-flash',
+      MAYA_MODEL: 'gemini-3-flash',
     }),
     processEnv,
   })

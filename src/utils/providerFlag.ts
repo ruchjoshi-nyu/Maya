@@ -6,7 +6,7 @@
  *
  * Usage:
  *   maya --provider openai --model gpt-4o
- *   maya --provider maya --model maya-3-flash
+ *   maya --provider maya --model gemini-3-flash
  *   maya --provider ollama --model llama3.2
  *   maya --provider anthropic   (default, no-op)
  */

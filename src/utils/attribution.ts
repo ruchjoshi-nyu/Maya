@@ -289,12 +289,12 @@ async function getTranscriptStats(): Promise<{
 /**
  * Get enhanced PR attribution text with Maya contribution stats.
  *
- * Format: "🤖 Generated with Maya (93% 3-shotted by maya-opus-4-5)"
+ * Format: "🤖 Generated with Maya (93% 3-shotted by claude-opus-4-5)"
  *
  * Rules:
  * - Shows Maya contribution percentage from commit attribution
  * - Shows N-shotted where N is the prompt count (1-shotted, 2-shotted, etc.)
- * - Shows short model name (e.g., maya-opus-4-5)
+ * - Shows short model name (e.g., claude-opus-4-5)
  * - Returns default attribution if stats can't be computed
  *
  * @param getAppState Function to get the current AppState (from command context)
@@ -372,7 +372,7 @@ export async function getEnhancedPRAttribution(
     return defaultAttribution
   }
 
-  // Build the enhanced attribution: "🤖 Generated with Maya (93% 3-shotted by maya-opus-4-5, 2 memories recalled)"
+  // Build the enhanced attribution: "🤖 Generated with Maya (93% 3-shotted by claude-opus-4-5, 2 memories recalled)"
   const memSuffix =
     memoryAccessCount > 0
       ? `, ${memoryAccessCount} ${memoryAccessCount === 1 ? 'memory' : 'memories'} recalled`

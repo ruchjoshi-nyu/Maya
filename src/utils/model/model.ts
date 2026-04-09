@@ -37,7 +37,7 @@ export function getSmallFastModel(): ModelName {
   if (process.env.ANTHROPIC_SMALL_FAST_MODEL) return process.env.ANTHROPIC_SMALL_FAST_MODEL
   // For Maya provider, use a fast model
   if (getAPIProvider() === 'maya') {
-    return process.env.MAYA_MODEL || 'maya-3.1-flash-lite'
+    return process.env.MAYA_MODEL || 'gemini-3.1-flash-lite'
   }
   // For OpenAI provider, use OPENAI_MODEL or a sensible default
   if (getAPIProvider() === 'openai') {
@@ -127,7 +127,7 @@ export function getDefaultOpusModel(): ModelName {
   }
   // Maya provider
   if (getAPIProvider() === 'maya') {
-    return process.env.MAYA_MODEL || 'maya-3.1-pro'
+    return process.env.MAYA_MODEL || 'gemini-3.1-pro'
   }
   // OpenAI provider: use user-specified model or default
   if (getAPIProvider() === 'openai') {
@@ -153,7 +153,7 @@ export function getDefaultSonnetModel(): ModelName {
   }
   // Maya provider
   if (getAPIProvider() === 'maya') {
-    return process.env.MAYA_MODEL || 'maya-3-flash'
+    return process.env.MAYA_MODEL || 'gemini-3-flash'
   }
   // OpenAI provider
   if (getAPIProvider() === 'openai') {
@@ -177,7 +177,7 @@ export function getDefaultHaikuModel(): ModelName {
   }
   // Maya provider
   if (getAPIProvider() === 'maya') {
-    return process.env.MAYA_MODEL || 'maya-3.1-flash-lite'
+    return process.env.MAYA_MODEL || 'gemini-3.1-flash-lite'
   }
   // OpenAI provider
   if (getAPIProvider() === 'openai') {
@@ -233,7 +233,7 @@ export function getRuntimeMainLoopModel(params: {
 export function getDefaultMainLoopModelSetting(): ModelName | ModelAlias {
   // Maya provider: always use the configured Maya model
   if (getAPIProvider() === 'maya') {
-    return process.env.MAYA_MODEL || 'maya-3-flash'
+    return process.env.MAYA_MODEL || 'gemini-3-flash'
   }
   // OpenAI provider: always use the configured OpenAI model
   if (getAPIProvider() === 'openai') {
@@ -282,58 +282,58 @@ export function getDefaultMainLoopModel(): ModelName {
 // @[MODEL LAUNCH]: Add a canonical name mapping for the new model below.
 /**
  * Pure string-match that strips date/provider suffixes from a first-party model
- * name. Input must already be a 1P-format ID (e.g. 'maya-3-7-sonnet-20250219',
- * 'us.anthropic.maya-opus-4-6-v1:0'). Does not touch settings, so safe at
+ * name. Input must already be a 1P-format ID (e.g. 'claude-3-7-sonnet-20250219',
+ * 'us.anthropic.claude-opus-4-6-v1:0'). Does not touch settings, so safe at
  * module top-level (see MODEL_COSTS in modelCost.ts).
  */
 export function firstPartyNameToCanonical(name: ModelName): ModelShortName {
   name = name.toLowerCase()
-  // Special cases for Maya 4+ models to differentiate versions
+  // Special cases for Claude 4+ models to differentiate versions
   // Order matters: check more specific versions first (4-5 before 4)
-  if (name.includes('maya-opus-4-6')) {
-    return 'maya-opus-4-6'
+  if (name.includes('claude-opus-4-6')) {
+    return 'claude-opus-4-6'
   }
-  if (name.includes('maya-opus-4-5')) {
-    return 'maya-opus-4-5'
+  if (name.includes('claude-opus-4-5')) {
+    return 'claude-opus-4-5'
   }
-  if (name.includes('maya-opus-4-1')) {
-    return 'maya-opus-4-1'
+  if (name.includes('claude-opus-4-1')) {
+    return 'claude-opus-4-1'
   }
-  if (name.includes('maya-opus-4')) {
-    return 'maya-opus-4'
+  if (name.includes('claude-opus-4')) {
+    return 'claude-opus-4'
   }
-  if (name.includes('maya-sonnet-4-6')) {
-    return 'maya-sonnet-4-6'
+  if (name.includes('claude-sonnet-4-6')) {
+    return 'claude-sonnet-4-6'
   }
-  if (name.includes('maya-sonnet-4-5')) {
-    return 'maya-sonnet-4-5'
+  if (name.includes('claude-sonnet-4-5')) {
+    return 'claude-sonnet-4-5'
   }
-  if (name.includes('maya-sonnet-4')) {
-    return 'maya-sonnet-4'
+  if (name.includes('claude-sonnet-4')) {
+    return 'claude-sonnet-4'
   }
-  if (name.includes('maya-haiku-4-5')) {
-    return 'maya-haiku-4-5'
+  if (name.includes('claude-haiku-4-5')) {
+    return 'claude-haiku-4-5'
   }
-  // Maya 3.x models use a different naming scheme (maya-3-{family})
-  if (name.includes('maya-3-7-sonnet')) {
-    return 'maya-3-7-sonnet'
+  // Claude 3.x models use a different naming scheme (claude-3-{family})
+  if (name.includes('claude-3-7-sonnet')) {
+    return 'claude-3-7-sonnet'
   }
-  if (name.includes('maya-3-5-sonnet')) {
-    return 'maya-3-5-sonnet'
+  if (name.includes('claude-3-5-sonnet')) {
+    return 'claude-3-5-sonnet'
   }
-  if (name.includes('maya-3-5-haiku')) {
-    return 'maya-3-5-haiku'
+  if (name.includes('claude-3-5-haiku')) {
+    return 'claude-3-5-haiku'
   }
-  if (name.includes('maya-3-opus')) {
-    return 'maya-3-opus'
+  if (name.includes('claude-3-opus')) {
+    return 'claude-3-opus'
   }
-  if (name.includes('maya-3-sonnet')) {
-    return 'maya-3-sonnet'
+  if (name.includes('claude-3-sonnet')) {
+    return 'claude-3-sonnet'
   }
-  if (name.includes('maya-3-haiku')) {
-    return 'maya-3-haiku'
+  if (name.includes('claude-3-haiku')) {
+    return 'claude-3-haiku'
   }
-  const match = name.match(/(maya-(\d+-\d+-)?\w+)/)
+  const match = name.match(/(claude-(\d+-\d+-)?\w+)/)
   if (match && match[1]) {
     return match[1]
   }
@@ -343,10 +343,10 @@ export function firstPartyNameToCanonical(name: ModelName): ModelShortName {
 
 /**
  * Maps a full model string to a shorter canonical version that's unified across 1P and 3P providers.
- * For example, 'maya-3-5-haiku-20241022' and 'us.anthropic.maya-3-5-haiku-20241022-v1:0'
- * would both be mapped to 'maya-3-5-haiku'.
- * @param fullModelName The full model name (e.g., 'maya-3-5-haiku-20241022')
- * @returns The short name (e.g., 'maya-3-5-haiku') if found, or the original name if no mapping exists
+ * For example, 'claude-3-5-haiku-20241022' and 'us.anthropic.claude-3-5-haiku-20241022-v1:0'
+ * would both be mapped to 'claude-3-5-haiku'.
+ * @param fullModelName The full model name (e.g., 'claude-3-5-haiku-20241022')
+ * @returns The short name (e.g., 'claude-3-5-haiku') if found, or the original name if no mapping exists
  */
 export function getCanonicalName(fullModelName: ModelName): ModelShortName {
   // Resolve overridden model IDs (e.g. Bedrock ARNs) back to canonical names.
@@ -622,7 +622,7 @@ export function resolveSkillModelOverride(
   if (has1mContext(skillModel) || !has1mContext(currentModel)) {
     return skillModel
   }
-  // modelSupports1M matches on canonical IDs ('maya-opus-4-6', 'maya-sonnet-4');
+  // modelSupports1M matches on canonical IDs ('claude-opus-4-6', 'claude-sonnet-4');
   // a bare 'opus' alias falls through getCanonicalName unmatched. Resolve first.
   if (modelSupports1M(parseUserSpecifiedModel(skillModel))) {
     return skillModel + '[1m]'
@@ -631,10 +631,10 @@ export function resolveSkillModelOverride(
 }
 
 const LEGACY_OPUS_FIRSTPARTY = [
-  'maya-opus-4-20250514',
-  'maya-opus-4-1-20250805',
-  'maya-opus-4-0',
-  'maya-opus-4-1',
+  'claude-opus-4-20250514',
+  'claude-opus-4-1-20250805',
+  'claude-opus-4-0',
+  'claude-opus-4-1',
 ]
 
 function isLegacyOpusFirstParty(model: string): boolean {
@@ -671,38 +671,38 @@ export function getMarketingNameForModel(modelId: string): string | undefined {
   const has1m = modelId.toLowerCase().includes('[1m]')
   const canonical = getCanonicalName(modelId)
 
-  if (canonical.includes('maya-opus-4-6')) {
+  if (canonical.includes('claude-opus-4-6')) {
     return has1m ? 'Opus 4.6 (with 1M context)' : 'Opus 4.6'
   }
-  if (canonical.includes('maya-opus-4-5')) {
+  if (canonical.includes('claude-opus-4-5')) {
     return 'Opus 4.5'
   }
-  if (canonical.includes('maya-opus-4-1')) {
+  if (canonical.includes('claude-opus-4-1')) {
     return 'Opus 4.1'
   }
-  if (canonical.includes('maya-opus-4')) {
+  if (canonical.includes('claude-opus-4')) {
     return 'Opus 4'
   }
-  if (canonical.includes('maya-sonnet-4-6')) {
+  if (canonical.includes('claude-sonnet-4-6')) {
     return has1m ? 'Sonnet 4.6 (with 1M context)' : 'Sonnet 4.6'
   }
-  if (canonical.includes('maya-sonnet-4-5')) {
+  if (canonical.includes('claude-sonnet-4-5')) {
     return has1m ? 'Sonnet 4.5 (with 1M context)' : 'Sonnet 4.5'
   }
-  if (canonical.includes('maya-sonnet-4')) {
+  if (canonical.includes('claude-sonnet-4')) {
     return has1m ? 'Sonnet 4 (with 1M context)' : 'Sonnet 4'
   }
-  if (canonical.includes('maya-3-7-sonnet')) {
-    return 'Maya 3.7 Sonnet'
+  if (canonical.includes('claude-3-7-sonnet')) {
+    return 'Claude 3.7 Sonnet'
   }
-  if (canonical.includes('maya-3-5-sonnet')) {
-    return 'Maya 3.5 Sonnet'
+  if (canonical.includes('claude-3-5-sonnet')) {
+    return 'Claude 3.5 Sonnet'
   }
-  if (canonical.includes('maya-haiku-4-5')) {
+  if (canonical.includes('claude-haiku-4-5')) {
     return 'Haiku 4.5'
   }
-  if (canonical.includes('maya-3-5-haiku')) {
-    return 'Maya 3.5 Haiku'
+  if (canonical.includes('claude-3-5-haiku')) {
+    return 'Claude 3.5 Haiku'
   }
 
   return undefined

@@ -1212,8 +1212,8 @@ export function getErrorMessageIfRefusal(
     : `${API_ERROR_MESSAGE_PREFIX}: Maya is unable to respond to this request, which appears to violate our Usage Policy (${usagePolicyUrl}). Please double press esc to edit your last message or start a new session for Maya to assist with a different task.`
 
   const modelSuggestion =
-    model !== 'maya-sonnet-4-20250514'
-      ? ' If you are seeing this refusal repeatedly, try running /model maya-sonnet-4-20250514 to switch models.'
+    model !== 'claude-sonnet-4-20250514'
+      ? ' If you are seeing this refusal repeatedly, try running /model claude-sonnet-4-20250514 to switch models.'
       : ''
 
   return createAssistantAPIErrorMessage({

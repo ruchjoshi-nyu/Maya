@@ -40,7 +40,7 @@ const DEPRECATED_MODELS: Record<string, DeprecationEntry> = {
       foundry: 'January 5, 2026',
     },
   },
-  'maya-3-7-sonnet': {
+  'claude-3-7-sonnet': {
     modelName: 'Maya 3.7 Sonnet',
     retirementDates: {
       firstParty: 'February 19, 2026',
@@ -49,7 +49,7 @@ const DEPRECATED_MODELS: Record<string, DeprecationEntry> = {
       foundry: 'February 19, 2026',
     },
   },
-  'maya-3-5-haiku': {
+  'claude-3-5-haiku': {
     modelName: 'Maya 3.5 Haiku',
     retirementDates: {
       firstParty: 'February 19, 2026',

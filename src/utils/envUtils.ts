@@ -167,18 +167,18 @@ export function isInProtectedNamespace(): boolean {
 /**
  * Model prefix → env var for Vertex region overrides.
  * Order matters: more specific prefixes must come before less specific ones
- * (e.g., 'maya-opus-4-1' before 'maya-opus-4').
+ * (e.g., 'claude-opus-4-1' before 'claude-opus-4').
  */
 const VERTEX_REGION_OVERRIDES: ReadonlyArray<[string, string]> = [
-  ['maya-haiku-4-5', 'VERTEX_REGION_MAYA_HAIKU_4_5'],
-  ['maya-3-5-haiku', 'VERTEX_REGION_MAYA_3_5_HAIKU'],
-  ['maya-3-5-sonnet', 'VERTEX_REGION_MAYA_3_5_SONNET'],
-  ['maya-3-7-sonnet', 'VERTEX_REGION_MAYA_3_7_SONNET'],
-  ['maya-opus-4-1', 'VERTEX_REGION_MAYA_4_1_OPUS'],
-  ['maya-opus-4', 'VERTEX_REGION_MAYA_4_0_OPUS'],
-  ['maya-sonnet-4-6', 'VERTEX_REGION_MAYA_4_6_SONNET'],
-  ['maya-sonnet-4-5', 'VERTEX_REGION_MAYA_4_5_SONNET'],
-  ['maya-sonnet-4', 'VERTEX_REGION_MAYA_4_0_SONNET'],
+  ['claude-haiku-4-5', 'VERTEX_REGION_MAYA_HAIKU_4_5'],
+  ['claude-3-5-haiku', 'VERTEX_REGION_MAYA_3_5_HAIKU'],
+  ['claude-3-5-sonnet', 'VERTEX_REGION_MAYA_3_5_SONNET'],
+  ['claude-3-7-sonnet', 'VERTEX_REGION_MAYA_3_7_SONNET'],
+  ['claude-opus-4-1', 'VERTEX_REGION_MAYA_4_1_OPUS'],
+  ['claude-opus-4', 'VERTEX_REGION_MAYA_4_0_OPUS'],
+  ['claude-sonnet-4-6', 'VERTEX_REGION_MAYA_4_6_SONNET'],
+  ['claude-sonnet-4-5', 'VERTEX_REGION_MAYA_4_5_SONNET'],
+  ['claude-sonnet-4', 'VERTEX_REGION_MAYA_4_0_SONNET'],
 ]
 
 /**

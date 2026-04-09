@@ -180,7 +180,7 @@ test('preserves Maya tool call extra_content in follow-up requests', async () =>
     return new Response(
       JSON.stringify({
         id: 'chatcmpl-1',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             message: {
@@ -207,7 +207,7 @@ test('preserves Maya tool call extra_content in follow-up requests', async () =>
   const client = createOpenAIShimClient({}) as OpenAIShimClient
 
   await client.beta.messages.create({
-    model: 'google/maya-3.1-pro-preview',
+    model: 'google/gemini-3.1-pro-preview',
     system: 'test system',
     messages: [
       { role: 'user', content: 'Use Bash' },
@@ -473,7 +473,7 @@ test('uses MAYA_ACCESS_TOKEN for Maya OpenAI-compatible requests', async () => {
   process.env.GOOGLE_CLOUD_PROJECT = 'maya-project'
   process.env.MAYA_BASE_URL =
     'https://generativelanguage.googleapis.com/v1beta/openai'
-  process.env.MAYA_MODEL = 'maya-3-flash'
+  process.env.MAYA_MODEL = 'gemini-3-flash'
   delete process.env.OPENAI_BASE_URL
   delete process.env.OPENAI_API_KEY
   delete process.env.MAYA_API_KEY
@@ -492,7 +492,7 @@ test('uses MAYA_ACCESS_TOKEN for Maya OpenAI-compatible requests', async () => {
     return new Response(
       JSON.stringify({
         id: 'chatcmpl-maya',
-        model: 'maya-3-flash',
+        model: 'gemini-3-flash',
         choices: [
           {
             message: {
@@ -519,7 +519,7 @@ test('uses MAYA_ACCESS_TOKEN for Maya OpenAI-compatible requests', async () => {
   const client = createOpenAIShimClient({}) as OpenAIShimClient
 
   await client.beta.messages.create({
-    model: 'maya-3-flash',
+    model: 'gemini-3-flash',
     messages: [{ role: 'user', content: 'hello' }],
     max_tokens: 32,
     stream: false,
@@ -538,7 +538,7 @@ test('preserves Maya tool call extra_content from streaming chunks', async () =>
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -568,7 +568,7 @@ test('preserves Maya tool call extra_content from streaming chunks', async () =>
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -586,7 +586,7 @@ test('preserves Maya tool call extra_content from streaming chunks', async () =>
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -624,7 +624,7 @@ test('normalizes plain string Bash tool arguments from OpenAI-compatible respons
     return new Response(
       JSON.stringify({
         id: 'chatcmpl-1',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             message: {
@@ -660,7 +660,7 @@ test('normalizes plain string Bash tool arguments from OpenAI-compatible respons
   const client = createOpenAIShimClient({}) as OpenAIShimClient
 
   const message = await client.beta.messages.create({
-    model: 'google/maya-3.1-pro-preview',
+    model: 'google/gemini-3.1-pro-preview',
     system: 'test system',
     messages: [{ role: 'user', content: 'Use Bash' }],
     max_tokens: 64,
@@ -686,7 +686,7 @@ test('normalizes Bash tool arguments that are valid JSON strings', async () => {
     return new Response(
       JSON.stringify({
         id: 'chatcmpl-1',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             message: {
@@ -722,7 +722,7 @@ test('normalizes Bash tool arguments that are valid JSON strings', async () => {
   const client = createOpenAIShimClient({}) as OpenAIShimClient
 
   const message = await client.beta.messages.create({
-    model: 'google/maya-3.1-pro-preview',
+    model: 'google/gemini-3.1-pro-preview',
     system: 'test system',
     messages: [{ role: 'user', content: 'Use Bash' }],
     max_tokens: 64,
@@ -752,7 +752,7 @@ test.each([
       return new Response(
         JSON.stringify({
           id: 'chatcmpl-1',
-          model: 'google/maya-3.1-pro-preview',
+          model: 'google/gemini-3.1-pro-preview',
           choices: [
             {
               message: {
@@ -788,7 +788,7 @@ test.each([
     const client = createOpenAIShimClient({}) as OpenAIShimClient
 
     const message = await client.beta.messages.create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -813,7 +813,7 @@ test('keeps terminal empty Bash tool arguments invalid in non-streaming response
     return new Response(
       JSON.stringify({
         id: 'chatcmpl-1',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             message: {
@@ -849,7 +849,7 @@ test('keeps terminal empty Bash tool arguments invalid in non-streaming response
   const client = createOpenAIShimClient({}) as OpenAIShimClient
 
   const message = await client.beta.messages.create({
-    model: 'google/maya-3.1-pro-preview',
+    model: 'google/gemini-3.1-pro-preview',
     system: 'test system',
     messages: [{ role: 'user', content: 'Use Bash' }],
     max_tokens: 64,
@@ -874,7 +874,7 @@ test('normalizes plain string Bash tool arguments in streaming responses', async
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -899,7 +899,7 @@ test('normalizes plain string Bash tool arguments in streaming responses', async
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -917,7 +917,7 @@ test('normalizes plain string Bash tool arguments in streaming responses', async
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -950,7 +950,7 @@ test('normalizes plain string Bash tool arguments when streaming starts with an 
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -975,7 +975,7 @@ test('normalizes plain string Bash tool arguments when streaming starts with an 
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -997,7 +997,7 @@ test('normalizes plain string Bash tool arguments when streaming starts with an 
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1015,7 +1015,7 @@ test('normalizes plain string Bash tool arguments when streaming starts with an 
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -1048,7 +1048,7 @@ test('normalizes plain string Bash tool arguments when streaming starts with whi
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1073,7 +1073,7 @@ test('normalizes plain string Bash tool arguments when streaming starts with whi
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1095,7 +1095,7 @@ test('normalizes plain string Bash tool arguments when streaming starts with whi
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1113,7 +1113,7 @@ test('normalizes plain string Bash tool arguments when streaming starts with whi
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -1146,7 +1146,7 @@ test('keeps terminal whitespace-only Bash arguments invalid in streaming respons
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1171,7 +1171,7 @@ test('keeps terminal whitespace-only Bash arguments invalid in streaming respons
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1189,7 +1189,7 @@ test('keeps terminal whitespace-only Bash arguments invalid in streaming respons
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -1222,7 +1222,7 @@ test('normalizes streaming Bash arguments that begin with bracket syntax', async
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1247,7 +1247,7 @@ test('normalizes streaming Bash arguments that begin with bracket syntax', async
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1265,7 +1265,7 @@ test('normalizes streaming Bash arguments that begin with bracket syntax', async
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -1298,7 +1298,7 @@ test('normalizes streaming Bash arguments when the first chunk is only an openin
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1323,7 +1323,7 @@ test('normalizes streaming Bash arguments when the first chunk is only an openin
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1345,7 +1345,7 @@ test('normalizes streaming Bash arguments when the first chunk is only an openin
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1363,7 +1363,7 @@ test('normalizes streaming Bash arguments when the first chunk is only an openin
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -1396,7 +1396,7 @@ test('repairs truncated structured Bash JSON in streaming responses', async () =
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1421,7 +1421,7 @@ test('repairs truncated structured Bash JSON in streaming responses', async () =
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1439,7 +1439,7 @@ test('repairs truncated structured Bash JSON in streaming responses', async () =
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -1472,7 +1472,7 @@ test('does not normalize incomplete streamed Bash commands when finish_reason is
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1497,7 +1497,7 @@ test('does not normalize incomplete streamed Bash commands when finish_reason is
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1515,7 +1515,7 @@ test('does not normalize incomplete streamed Bash commands when finish_reason is
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -1548,7 +1548,7 @@ test('repairs truncated JSON objects even without command field', async () => {
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1573,7 +1573,7 @@ test('repairs truncated JSON objects even without command field', async () => {
       {
         id: 'chatcmpl-1',
         object: 'chat.completion.chunk',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             index: 0,
@@ -1591,7 +1591,7 @@ test('repairs truncated JSON objects even without command field', async () => {
 
   const result = await client.beta.messages
     .create({
-      model: 'google/maya-3.1-pro-preview',
+      model: 'google/gemini-3.1-pro-preview',
       system: 'test system',
       messages: [{ role: 'user', content: 'Use Bash' }],
       max_tokens: 64,
@@ -1623,7 +1623,7 @@ test('preserves raw input for unknown plain string tool arguments', async () => 
     return new Response(
       JSON.stringify({
         id: 'chatcmpl-1',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             message: {
@@ -1659,7 +1659,7 @@ test('preserves raw input for unknown plain string tool arguments', async () => 
   const client = createOpenAIShimClient({}) as OpenAIShimClient
 
   const message = await client.beta.messages.create({
-    model: 'google/maya-3.1-pro-preview',
+    model: 'google/gemini-3.1-pro-preview',
     system: 'test system',
     messages: [{ role: 'user', content: 'Use tool' }],
     max_tokens: 64,
@@ -1683,7 +1683,7 @@ test('preserves parsed string input for unknown JSON string tool arguments', asy
     return new Response(
       JSON.stringify({
         id: 'chatcmpl-1',
-        model: 'google/maya-3.1-pro-preview',
+        model: 'google/gemini-3.1-pro-preview',
         choices: [
           {
             message: {
@@ -1719,7 +1719,7 @@ test('preserves parsed string input for unknown JSON string tool arguments', asy
   const client = createOpenAIShimClient({}) as OpenAIShimClient
 
   const message = await client.beta.messages.create({
-    model: 'google/maya-3.1-pro-preview',
+    model: 'google/gemini-3.1-pro-preview',
     system: 'test system',
     messages: [{ role: 'user', content: 'Use tool' }],
     max_tokens: 64,

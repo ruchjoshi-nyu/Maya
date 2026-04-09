@@ -34,14 +34,14 @@ import typescriptMayaApiToolUse from './maya-api/typescript/maya-api/tool-use.md
 //   - maya-api/SKILL.md (Current Models pricing table)
 //   - maya-api/shared/models.md (full model catalog with legacy versions and alias mappings)
 export const SKILL_MODEL_VARS = {
-  OPUS_ID: 'maya-opus-4-6',
+  OPUS_ID: 'claude-opus-4-6',
   OPUS_NAME: 'Maya Opus 4.6',
-  SONNET_ID: 'maya-sonnet-4-6',
+  SONNET_ID: 'claude-sonnet-4-6',
   SONNET_NAME: 'Maya Sonnet 4.6',
-  HAIKU_ID: 'maya-haiku-4-5',
+  HAIKU_ID: 'claude-haiku-4-5',
   HAIKU_NAME: 'Maya Haiku 4.5',
   // Previous Sonnet ID — used in "do not append date suffixes" example in SKILL.md.
-  PREV_SONNET_ID: 'maya-sonnet-4-5',
+  PREV_SONNET_ID: 'claude-sonnet-4-5',
 } satisfies Record<string, string>
 
 export const SKILL_PROMPT: string = skillPrompt

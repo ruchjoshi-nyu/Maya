@@ -521,11 +521,11 @@ function getModelFamilyInfo(
 
   // Sonnet family
   if (
-    canonical.includes('maya-sonnet-4-6') ||
-    canonical.includes('maya-sonnet-4-5') ||
-    canonical.includes('maya-sonnet-4-') ||
-    canonical.includes('maya-3-7-sonnet') ||
-    canonical.includes('maya-3-5-sonnet')
+    canonical.includes('claude-sonnet-4-6') ||
+    canonical.includes('claude-sonnet-4-5') ||
+    canonical.includes('claude-sonnet-4-') ||
+    canonical.includes('claude-3-7-sonnet') ||
+    canonical.includes('claude-3-5-sonnet')
   ) {
     const currentName = getMarketingNameForModel(getDefaultSonnetModel())
     if (currentName) {
@@ -534,7 +534,7 @@ function getModelFamilyInfo(
   }
 
   // Opus family
-  if (canonical.includes('maya-opus-4')) {
+  if (canonical.includes('claude-opus-4')) {
     const currentName = getMarketingNameForModel(getDefaultOpusModel())
     if (currentName) {
       return { alias: 'Opus', currentVersionName: currentName }
@@ -543,8 +543,8 @@ function getModelFamilyInfo(
 
   // Haiku family
   if (
-    canonical.includes('maya-haiku') ||
-    canonical.includes('maya-3-5-haiku')
+    canonical.includes('claude-haiku') ||
+    canonical.includes('claude-3-5-haiku')
   ) {
     const currentName = getMarketingNameForModel(getDefaultHaikuModel())
     if (currentName) {

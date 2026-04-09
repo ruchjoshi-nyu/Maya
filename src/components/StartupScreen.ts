@@ -87,7 +87,7 @@ function detectProvider(): { name: string; model: string; baseUrl: string; isLoc
   const useOpenAI = process.env.MAYA_CODE_USE_OPENAI === '1' || process.env.MAYA_CODE_USE_OPENAI === 'true'
 
   if (useMaya) {
-    const model = process.env.MAYA_MODEL || 'maya-3-flash'
+    const model = process.env.MAYA_MODEL || 'gemini-3-flash'
     const baseUrl = process.env.MAYA_BASE_URL || 'https://generativelanguage.googleapis.com/v1beta/openai'
     return { name: 'Google Maya', model, baseUrl, isLocal: false }
   }
@@ -140,7 +140,7 @@ function detectProvider(): { name: string; model: string; baseUrl: string; isLoc
   }
 
   // Default: Anthropic
-  const model = process.env.ANTHROPIC_MODEL || process.env.MAYA_MODEL || 'maya-sonnet-4-6'
+  const model = process.env.ANTHROPIC_MODEL || process.env.MAYA_MODEL || 'claude-sonnet-4-6'
   return { name: 'Anthropic', model, baseUrl: 'https://api.anthropic.com', isLocal: false }
 }
 

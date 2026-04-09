@@ -139,7 +139,7 @@ function checkMayaEnv(): CheckResult[] {
   results.push(pass('Provider mode', 'Google Maya provider enabled.'))
 
   if (!model) {
-    results.push(pass('MAYA_MODEL', 'Not set. Default maya-3.0-flash will be used.'))
+    results.push(pass('MAYA_MODEL', 'Not set. Default gemini-3.0-flash will be used.'))
   } else {
     results.push(pass('MAYA_MODEL', model))
   }
@@ -420,7 +420,7 @@ function serializeSafeEnvSummary(): Record<string, string | boolean> {
   if (isTruthy(process.env.MAYA_CODE_USE_MAYA)) {
     return {
       MAYA_CODE_USE_MAYA: true,
-      MAYA_MODEL: process.env.MAYA_MODEL ?? '(unset, default: maya-3-flash)',
+      MAYA_MODEL: process.env.MAYA_MODEL ?? '(unset, default: gemini-3-flash)',
       MAYA_BASE_URL: process.env.MAYA_BASE_URL ?? 'https://generativelanguage.googleapis.com/v1beta/openai',
       MAYA_API_KEY_SET: Boolean(process.env.MAYA_API_KEY ?? process.env.GOOGLE_API_KEY),
     }

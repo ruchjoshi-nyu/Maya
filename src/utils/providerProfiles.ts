@@ -123,7 +123,7 @@ export function getProviderPresetDefaults(
         provider: 'anthropic',
         name: 'Anthropic',
         baseUrl: process.env.ANTHROPIC_BASE_URL ?? 'https://api.anthropic.com',
-        model: process.env.ANTHROPIC_MODEL ?? 'maya-sonnet-4-6',
+        model: process.env.ANTHROPIC_MODEL ?? 'claude-sonnet-4-6',
         apiKey: process.env.ANTHROPIC_API_KEY ?? '',
         requiresApiKey: true,
       }
@@ -159,7 +159,7 @@ export function getProviderPresetDefaults(
         provider: 'openai',
         name: 'Google Maya',
         baseUrl: 'https://generativelanguage.googleapis.com/v1beta/openai',
-        model: 'maya-3-flash-preview',
+        model: 'gemini-3-flash-preview',
         apiKey: '',
         requiresApiKey: true,
       }

@@ -221,14 +221,14 @@ test('buildProfileSaveMessage describes Maya access token / ADC mode clearly', (
     'maya',
     {
       MAYA_AUTH_MODE: 'access-token',
-      MAYA_MODEL: 'maya-3-flash',
+      MAYA_MODEL: 'gemini-3-flash',
       MAYA_BASE_URL: 'https://generativelanguage.googleapis.com/v1beta/openai',
     },
     'D:/codings/Opensource/maya/.maya-profile.json',
   )
 
   expect(message).toContain('Saved Google Maya profile.')
-  expect(message).toContain('Model: maya-3-flash')
+  expect(message).toContain('Model: gemini-3-flash')
   expect(message).toContain('Credentials: access token (stored securely)')
   expect(message).not.toContain('AIza')
 })
@@ -305,5 +305,5 @@ test('getProviderWizardDefaults ignores poisoned current provider values', () =>
 
   expect(defaults.openAIModel).toBe('gpt-4o')
   expect(defaults.openAIBaseUrl).toBe('https://api.openai.com/v1')
-  expect(defaults.mayaModel).toBe('maya-3-flash')
+  expect(defaults.mayaModel).toBe('gemini-3-flash')
 })
